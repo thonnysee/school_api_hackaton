@@ -1,0 +1,56 @@
+version: '2'
+services:
+  #Composer Endpoint
+  composer:
+    build:
+      context: docker/composer/.
+      dockerfile: Dockerfile
+    volumes_from:
+      - app
+    working_dir: /var/www
+    command: install
+  #PHP Endpoint
+  app:
+    build:
+      context: docker/.
+      dockerfile: app.dockerfile
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+      - ./docker/conf/php-conf.ini:/usr/local/etc/php/conf.d/platform-php-conf.ini
+    environment:
+      DB_HOST: database
+      QUEUE_DRIVER: database
+  #Nginx Endpoint
+  web:
+    image: nginx:1.10-alpine
+    ports:
+      - 9094:80
+    volumes:
+      - ./docker/conf/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./public:/var/www/public
+    working_dir: /var/www
+    volumes_from:
+      - app
+  #Yarn Endpoint
+  yarn:
+    build:
+      context: docker/yarn/.
+    volumes_from:
+      - app
+    working_dir: /var/www
+    command: bash -c "yarn install && yarn run watch"
+  #Database endpoint
+  database:
+    image: mdillon/postgis
+    volumes:
+      - dbdata:/var/lib/postgresql/postgresql/data
+    environment:
+      PGDATA: /var/lib/postgresql/postgresql/data
+      POSTGRES_DB: db_platform
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: db_password
+    ports:
+      - 5435:5432
+volumes:
+  dbdata:
