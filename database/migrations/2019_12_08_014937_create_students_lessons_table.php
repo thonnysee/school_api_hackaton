@@ -25,6 +25,7 @@ class CreateStudentsLessonsTable extends Migration
             $table->boolean('homework_delivered')->default('false');
             $table->boolean('student_reported')->default(false);
             $table->string('reason_reported')->nullable();
+            $table->uuid('course_id');
             $table->uuid('lesson_id');
             $table->date('lesson_date');
             $table->timestamps();

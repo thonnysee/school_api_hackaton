@@ -57,4 +57,12 @@ class Users extends Authenticatable
     {
         return $this->belongsTo('App\Roles','role_id');
     }
+
+    public function student_lessons(){
+        return $this->hasMany('App\StudentsLessons','student_id');
+    }
+    public function teacher_lessons(){
+        return $this->hasMany('App\StudentsLessons','teacher_id');
+    }
+
 }

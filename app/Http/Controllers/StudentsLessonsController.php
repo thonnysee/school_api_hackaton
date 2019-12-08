@@ -14,7 +14,7 @@ class StudentsLessonsController extends Controller
      */
     public function index()
     {
-        if ($studen_lessons = StudentsLessons::all())return response()->json($studen_lessons,'200');
+        if ($studen_lessons = StudentsLessons::with(['student','teacher','homework','lesson','course','exam'])->get())return response()->json($studen_lessons,'200');
         return response()->json("Data not found",'404');
     }
 

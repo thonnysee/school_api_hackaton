@@ -14,6 +14,7 @@ class StudentsLessonsSeeder extends Seeder
         $student = \App\Users::where('school_grade','3')->first();
         $teacher = \App\Users::where('user_code','MLIP67890')->first();
         $lessons = \App\Lessons::all();
+        $course = \App\Courses::where('code','36')->first();
         foreach ($lessons as $lesson){
             $assistance = random_int(0,1);
             $report = random_int(0,1);
@@ -30,6 +31,7 @@ class StudentsLessonsSeeder extends Seeder
                 'lesson_id'=>$lesson->id,
                 'lesson_date'=>$lesson->date,
                 'student_reported'=>$report,
+                'course_id'=>$course->id,
                 'reason_reported'=>($report)?'Hablando y riendose en Clase':'Buena Conducta'
             ]);
         }
