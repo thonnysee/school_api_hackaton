@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Types extends Model
+class Partials extends Model
 {
     public $incrementing = false;
 }

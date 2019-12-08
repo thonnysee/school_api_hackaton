@@ -21,20 +21,10 @@ class RolesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Json Response
      */
     public function store(Request $request)
     {
@@ -49,9 +39,9 @@ class RolesController extends Controller
                 ]);
                 return response()->json($rol, 201);
             }
-            return response()->json('Bad Request',400);
+            return response()->json('http_response_bad_request',400);
         }
-        return response()->json('Bad Request', 400);
+        return response()->json('http_response_bad_request', 400);
     }
 
     /**
@@ -60,7 +50,7 @@ class RolesController extends Controller
      * @param  \App\Schools  $schools
      * @return \Illuminate\Http\Response
      */
-    public function show(Schools $schools)
+    public function show(Roles $roles)
     {
         //
     }
@@ -71,7 +61,7 @@ class RolesController extends Controller
      * @param  \App\Schools  $schools
      * @return \Illuminate\Http\Response
      */
-    public function edit(Schools $schools)
+    public function edit(Roles $roles)
     {
         //
     }
@@ -83,7 +73,7 @@ class RolesController extends Controller
      * @param  \App\Schools  $schools
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Schools $schools)
+    public function update(Request $request, Roles $roles)
     {
         //
     }
@@ -94,7 +84,7 @@ class RolesController extends Controller
      * @param  \App\Schools  $schools
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Schools $schools)
+    public function destroy(Roles $roles)
     {
         //
     }

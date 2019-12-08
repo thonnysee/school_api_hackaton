@@ -17,6 +17,7 @@ class CreateRelationStudentsTable extends Migration
             $table->uuid('id');
             $table->uuid('student_id');
             $table->uuid('relation_id');
+            $table->uuid('course_id');
             $table->uuid('role_id');//Role Relation Father->student, Teacher->student tec
             $table->timestamps();
         });

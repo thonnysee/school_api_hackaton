@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterUsersTable extends Migration
+class CreateClassroomsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class AlterUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('api_token', 80)->after('password')
-                ->unique()
-                ->nullable()
-                ->default(null);
+        Schema::create('classrooms', function (Blueprint $table) {
+            $table->uuid('id');
+            $table->string('name');
+            $table->string('description');
+            $table->string('schedule');
+            $table->timestamps();
         });
     }
 
@@ -28,8 +29,6 @@ class AlterUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('api_token');
-        });
+        Schema::dropIfExists('classrooms');
     }
 }

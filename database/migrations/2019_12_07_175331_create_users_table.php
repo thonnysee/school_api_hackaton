@@ -27,13 +27,18 @@ class CreateUsersTable extends Migration
             $table->string('user_code')->unique()->nullable();
             $table->string('gender')->default('');
             $table->string('blood_group')->default('');
-            $table->string('nationality')->default('');
-            $table->string('phone_number')->default('');
-            $table->string('address')->default('');
-            $table->text('about')->default('');
-            $table->string('profile_pic')->default('');
+            $table->string('nationality')->default('')->nullable();
+            $table->string('phone_number')->default('')->nullable();
+            $table->string('address')->nullable();
+            $table->text('about')->default('')->nullable();
+            $table->string('profile_pic')->default('')->nullable();
             $table->integer('school_grade')->unsigned()->nullable();
-            $table->string('type');
+            $table->uuid('type_id');
+            $table->uuid('classroom_id')->nullable();
+            $table->string('api_token', 80)->after('password')
+                ->unique()
+                ->nullable()
+                ->default(null);
             $table->rememberToken();
             $table->timestamps();
         });

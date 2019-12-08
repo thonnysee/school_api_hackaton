@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Types extends Model
+class Classrooms extends Model
 {
     public $incrementing = false;
 }

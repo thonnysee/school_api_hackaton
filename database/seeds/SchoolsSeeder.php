@@ -12,7 +12,7 @@ class SchoolsSeeder extends Seeder
      */
     public function run()
     {
-        $url = "http://datamx.io/api/action/datastore_search?resource_id=4c068721-1bcf-4887-b2bc-385b1e450d26&limit=5816";
+        $url = "http://datamx.io/api/action/datastore_search?resource_id=4c068721-1bcf-4887-b2bc-385b1e450d26&limit=50";
         $client = new \GuzzleHttp\Client();
         $response = $client->request('GET', $url)->getBody();
         $body = json_decode($response);

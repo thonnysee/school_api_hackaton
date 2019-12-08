@@ -15,9 +15,9 @@ class CreateTypesTable extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->uuid('id');
-            $table->uuid('name');
-            $table->uuid('school_id');
+            $table->string('name');
             $table->string('description');
+            $table->string('slug');
             $table->string('model');
             $table->timestamps();
         });
