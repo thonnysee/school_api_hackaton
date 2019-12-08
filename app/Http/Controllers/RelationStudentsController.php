@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\RelationStudents;
+use App\Roles;
+use App\StudentsLessons;
 use Illuminate\Http\Request;
 
 class RelationStudentsController extends Controller

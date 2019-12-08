@@ -20,6 +20,7 @@ Route::prefix('api')->group(function () {
     Route::resource('schools', 'SchoolsController');
     Route::resource('news', 'NewsController');
     Route::resource('roles', 'RolesController');
+    Route::resource('lessons', 'StudentsLessonsController');
     Route::group(['prefix' => 'auth'], function () {
         Route::post('login', 'AuthController@login');
         Route::post('signup', 'AuthController@signup');
