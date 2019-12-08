@@ -15,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        if ($users = Users::with(['school','role','student_lessons.course','student_lessons.homework','student_lessons.exam','teacher_lessons.course','teacher_lessons.homework','teacher_lessons.exam'])->get())return response()->json($users,'200');
+        if ($users = Users::with(['school','role','type','student_lessons.course','student_lessons.teacher','student_lessons.homework','student_lessons.exam','teacher_lessons.course','teacher_lessons.homework','teacher_lessons.student','teacher_lessons.exam'])->get())return response()->json($users,'200');
         return response()->json("Data not found",'404');
     }
 

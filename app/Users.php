@@ -64,5 +64,7 @@ class Users extends Authenticatable
     public function teacher_lessons(){
         return $this->hasMany('App\StudentsLessons','teacher_id');
     }
-
+    public function type(){
+        return $this->belongsTo('App\Types','type_id');
+    }
 }
