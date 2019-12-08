@@ -37,7 +37,7 @@ class Users extends Authenticatable
             'about',
             'profile_pic',
             'school_grade',
-            'type',
+            'type_id',
     ];
 
     /**
@@ -46,7 +46,7 @@ class Users extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','school_id','type_id','role_id','id','classroom_id','api_token','created_at','updated_at',
     ];
 
     public function school()

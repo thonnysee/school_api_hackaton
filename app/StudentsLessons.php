@@ -8,6 +8,9 @@ class StudentsLessons extends Model
 {
     public $table='public.students_lessons';
     public $incrementing = false;
+    protected $hidden = [
+        'id','created_at','updated_at', 'exam_id', 'homework_id','course_id','lesson_id','student_id','teacher_id'
+    ];
     public function exam(){
         return $this->belongsTo('App\Exams','exam_id');
     }
